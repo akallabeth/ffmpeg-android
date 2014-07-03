@@ -69,7 +69,7 @@ while getopts "a:h:m:p:" opt; do
   esac
 done
 
-if [ -z $HOST_ARCH]; then
+if [ -z $HOST_ARCH ]; then
   HOST_ARCH=$(uname -m)
 fi
 
@@ -188,8 +188,8 @@ E_CFLAGS=
 E_LDFLAGS=
 EXTRA=
 
-build_one $BUILD_ROOT $PREFIX $CROSS_PREFIX $ARCH $SYSROOT $E_CFLAGS \
-    $E_LDFLAGS $EXTRA
+build_one "$BUILD_ROOT" "$PREFIX" "$CROSS_PREFIX" "$ARCH" "$SYSROOT" \
+    "$E_CFLAGS" "$E_LDFLAGS" "$EXTRA"
 
 ###############################################################################
 #
@@ -206,8 +206,8 @@ E_CFLAGS="-march=armv7-a -mfloat-abi=softfp"
 E_LDFLAGS=
 EXTRA=
 
-build_one $BUILD_ROOT $PREFIX $CROSS_PREFIX $ARCH $SYSROOT $E_CFLAGS \
-    $E_LDFLAGS $EXTRA
+build_one "$BUILD_ROOT" "$PREFIX" "$CROSS_PREFIX" "$ARCH" "$SYSROOT" \
+    "$E_CFLAGS" "$E_LDFLAGS" "$EXTRA"
 
 ###############################################################################
 #
@@ -222,10 +222,10 @@ CROSS_PREFIX=$TOOLCHAIN/bin/i686-linux-android-
 ARCH=x86
 E_CFLAGS=
 E_LDFLAGS=
-EXTRA=
+EXTRA="--disable-asm"
 
-build_one $BUILD_ROOT $PREFIX $CROSS_PREFIX $ARCH $SYSROOT $E_CFLAGS \
-    $E_LDFLAGS $EXTRA
+build_one "$BUILD_ROOT" "$PREFIX" "$CROSS_PREFIX" "$ARCH" "$SYSROOT" \
+    "$E_CFLAGS" "$E_LDFLAGS" "$EXTRA"
 
 ###############################################################################
 #
@@ -242,6 +242,6 @@ E_CFLAGS=
 E_LDFLAGS=
 EXTRA=""
 
-build_one $BUILD_ROOT $PREFIX $CROSS_PREFIX $ARCH $SYSROOT $E_CFLAGS \
-    $E_LDFLAGS $EXTRA
+build_one "$BUILD_ROOT" "$PREFIX" "$CROSS_PREFIX" "$ARCH" "$SYSROOT" \
+    "$E_CFLAGS" "$E_LDFLAGS" "$EXTRA"
 
