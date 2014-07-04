@@ -110,6 +110,16 @@ fi
 
 patch -p1 < $BASE/patches/config.patch
 
+if [ ! -f library.mak.bak ]; then
+  echo "Saving original library.mak file to library.mak.bak"
+  cp library.mak library.mak.bak
+else
+  echo "Restoring original library.mak file from library.mak.bak"
+  cp library.mak.bak library.mak
+fi
+
+patch -p1 < $BASE/patches/library.mak.patch
+
 # Remove old build and installation files.
 if [ -d $BASE/install ]; then
   rm -rf $BASE/install
